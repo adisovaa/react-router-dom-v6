@@ -3,8 +3,8 @@ import './App.css';
 import {NavLink, Outlet, Route, Router, Routes, useParams} from "react-router-dom";
 
 const Profile = () => {
-    const param = useParams<'x' | 'y'>()
-    const some = param.x
+    const params = useParams<'*'>()
+    const some = params['*']
     console.log(some)
 
     return <div>Profile</div>
@@ -23,7 +23,7 @@ function App() {
                 <Route path={'/*'} element={<div>404</div>}/>
                 <Route path={'/'} element={<div>Main</div>}/>
                 <Route path={'/login'} element={<div>Login</div>}/>
-                <Route path={'/profile/:x'} element={<Profile/>}/>
+                <Route path={'/profile/:x/:y'} element={<Profile/>}/>
             </Routes>
 
             {/*<Routes>*/}
