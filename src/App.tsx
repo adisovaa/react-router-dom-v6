@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import './App.css';
-import {NavLink, Outlet, Route, Router, Routes, useNavigate, useParams} from "react-router-dom";
+import {NavLink, Outlet, Route, Router, Routes, useNavigate, useParams, useSearchParams} from "react-router-dom";
 
 // const Profile = () => {
 //     const param = useParams<'*'>()
@@ -11,20 +11,21 @@ import {NavLink, Outlet, Route, Router, Routes, useNavigate, useParams} from "re
 // }
 
 const Profile = () => {
-    const navigate = useNavigate()
+    const [searchParams, setSearchParams] = useSearchParams()
 
-    // useEffect(() => {
-    //     if(true) navigate('/login')
-    // }, [])
+    console.log(searchParams.get('name'))
+    console.log(Object.fromEntries(searchParams))
+
+    useEffect(() => {
+        console.log('research...')
+    }, [searchParams])
 
     return (
         <div>
             profile
-            <button onClick={() => navigate('login')}>logout</button>
-            {/*<button onClick={() => navigate(-1)}>logout</button>*/}
+            <button onClick={() => setSearchParams({...Object.fromEntries(searchParams), age: '23'})}>add age</button>
         </div>
     )
-
 }
 
 function App() {
