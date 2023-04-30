@@ -1,13 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
-import {NavLink, Outlet, Route, Router, Routes, useParams} from "react-router-dom";
+import {NavLink, Outlet, Route, Router, Routes, useNavigate, useParams} from "react-router-dom";
+
+// const Profile = () => {
+//     const param = useParams<'*'>()
+//     const some = param['*']
+//     console.log(some)
+//
+//     return <div>Profile</div>
+// }
 
 const Profile = () => {
-    const param = useParams<'*'>()
-    const some = param['*']
-    console.log(some)
+    const navigate = useNavigate()
 
-    return <div>Profile</div>
+    // useEffect(() => {
+    //     if(true) navigate('/login')
+    // }, [])
+
+    return (
+        <div>
+            profile
+            <button onClick={() => navigate('login')}>logout</button>
+            {/*<button onClick={() => navigate(-1)}>logout</button>*/}
+        </div>
+    )
+
 }
 
 function App() {
@@ -31,7 +48,7 @@ function App() {
                 <Route path={'/*'} element={<div>404</div>}/>
                 <Route path={'/'} element={<div>Main</div>}/>
                 <Route path={'/login'} element={<div>Login</div>}/>
-                <Route path={'/profile/:x/:y'} element={<Profile/>}/>
+                <Route path={'/profile'} element={<Profile/>}/>
             </Routes>
 
             <a
